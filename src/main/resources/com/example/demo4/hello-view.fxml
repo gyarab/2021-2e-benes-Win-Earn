@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<VBox id="vbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#SaveMe" prefHeight="1080.0" prefWidth="1920.0" spacing="20.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo4.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <StackPane fx:id="stackPane_full_screen" minHeight="1080.0" minWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0">
+            <children>
+                <GridPane id="vbox" fx:id="grid_main_snake" stylesheets="@style.css" StackPane.alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" percentHeight="0.0" prefHeight="180.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                    </rowConstraints>
+                    <children>
+                        <Pane id="shop_img_clasic_snake" fx:id="snake_map" maxHeight="700.0" maxWidth="1245.0" minHeight="700.0" minWidth="1230.0" prefHeight="700.0" prefWidth="1230.0" stylesheets="@style.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                            <children>
+                                <Button fx:id="btn_start_snake_game" layoutX="599.0" layoutY="333.0" mnemonicParsing="false" onAction="#startSnakeGame" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Start" textAlignment="CENTER">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="36.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </Pane>
+                        <VBox alignment="CENTER" prefHeight="164.0" prefWidth="1880.0">
+                            <children>
+                                <Label alignment="CENTER" minWidth="1080.0" prefWidth="1080.0" text="Snake" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="SansSerif Bold" size="60.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="btn_home_game" onAction="#onClick" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Home">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="24.0" />
+                                    </font>
+                                </Button>
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                        <Label text="Target: " textFill="WHITE">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="txt_game_snake_target" text="0" textFill="WHITE">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                        <Label text="Your skore: " textFill="WHITE">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="txt_game_snake_skore" text="0" textFill="WHITE">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                    <StackPane.margin>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                    </StackPane.margin>
+                </GridPane>
+                <GridPane id="vbox" fx:id="grid_main_count" stylesheets="@style.css">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" percentHeight="0.0" prefHeight="180.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Pane fx:id="count_map" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                            <children>
+                                <GridPane alignment="CENTER" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <HBox fx:id="hbox_count_txt" alignment="CENTER" maxWidth="1280.0" minWidth="1280.0" prefHeight="180.0" prefWidth="1280.0" GridPane.rowIndex="1">
+                                            <children>
+                                                <Label fx:id="txt_count_first_number" text="First number " textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="32.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="txt_count_sign" text=" X " textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="32.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="txt_count_second_number" text=" Second number " textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="32.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text=" = " textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="32.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <Button fx:id="btn_count_result_1" alignment="CENTER" contentDisplay="CENTER" onAction="#clickOnResult" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="First" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="32.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="btn_count_result_2" alignment="CENTER" contentDisplay="CENTER" onAction="#clickOnResult" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Second" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="32.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="btn_count_result_3" alignment="CENTER" contentDisplay="CENTER" onAction="#clickOnResult" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Third" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="32.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="btn_count_start_game" onAction="#startCountGame" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Start" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="24.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </Pane>
+                        <VBox alignment="CENTER" prefHeight="192.0" prefWidth="1880.0">
+                            <children>
+                                <Label alignment="CENTER" minWidth="1080.0" prefWidth="1080.0" text="CountGame" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="SansSerif Bold" size="60.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="btn_home_count" onAction="#onClick" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Home">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="24.0" />
+                                    </font>
+                                </Button>
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                        <Label text="Time: " textFill="WHITE">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="txt_count_time" text="10" textFill="WHITE">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                        <Label text="Your skore: " textFill="WHITE">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="txt_count_your_skore" text="0" textFill="WHITE">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </GridPane>
+                <GridPane id="vbox" fx:id="grid_main_platform" stylesheets="@style.css" StackPane.alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="617.0" minWidth="0.0" prefWidth="117.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1286.0" minWidth="10.0" prefWidth="1286.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="272.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" percentHeight="0.0" prefHeight="180.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Pane fx:id="platform_map" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <children>
+                        <Label id="platform_konec" fx:id="label_platform_konec" alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="331.0" minWidth="1080.0" prefHeight="69.0" prefWidth="1170.0" text=" " textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="SansSerif Bold" size="60.0" />
+                           </font>
+                        </Label>
+                     </children></Pane>
+                        <VBox alignment="CENTER" maxHeight="192.0" maxWidth="1880.0" minHeight="192.0" minWidth="1880.0" prefHeight="192.0" prefWidth="1880.0">
+                            <children>
+                                <Label alignment="CENTER" minWidth="1080.0" prefWidth="1080.0" text="JumpGame" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="SansSerif Bold" size="60.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="btn_home_platform" onAction="#onClick" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Home">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="24.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </VBox>
+                        <Pane id="vbox" prefHeight="900.0" prefWidth="468.0" stylesheets="@style.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    </children>
+                </GridPane>
+                <GridPane id="vbox" fx:id="grid_main_home" prefHeight="1040.0" prefWidth="1880.0" stylesheets="@style.css">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="510.0" minHeight="10.0" prefHeight="138.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="960.0" minHeight="10.0" prefHeight="902.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <StackPane fx:id="stackPane_main_bar" maxHeight="905.0" maxWidth="1880.0" prefHeight="940.0" prefWidth="1880.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                            <children>
+                                <GridPane id="GridPane" fx:id="grid_minigames" maxHeight="920.0" maxWidth="1880.0" prefHeight="940.0" stylesheets="@style.css">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="633.0" minHeight="10.0" prefHeight="626.3333129882812" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="390.3333740234375" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <TextFlow prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER">
+                                            <children>
+                                                <Label id="txt_title" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="1880.0" text="Minigames" textAlignment="CENTER" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="48.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </TextFlow>
+                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+                                            <children>
+                                                <Button fx:id="btn_start_snake" mnemonicParsing="false" onAction="#startGame" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #ffff; -fx-background-radius: 24px;" text="Play">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="32.0" />
+                                                    </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                                </Button>
+                                            </children>
+                                        </VBox>
+                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                            <children>
+                                                <Button fx:id="btn_start_jumpgame" mnemonicParsing="false" onAction="#startGame" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #ffff; -fx-background-radius: 24px;" text="Play">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="32.0" />
+                                                    </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                                </Button>
+                                            </children>
+                                        </VBox>
+                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                            <children>
+                                                <Button fx:id="btn_start_postreh" mnemonicParsing="false" onAction="#startGame" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #ffff; -fx-background-radius: 24px;" text="Play">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="32.0" />
+                                                    </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                                </Button>
+                                            </children>
+                                            <GridPane.margin>
+                                                <Insets />
+                                            </GridPane.margin>
+                                        </VBox>
+                                        <TextFlow prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER" GridPane.rowIndex="1">
+                                            <children>
+                                                <Label alignment="BOTTOM_CENTER" prefHeight="70.0" prefWidth="615.0" text="Snake" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="42.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </TextFlow>
+                                        <TextFlow prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                            <children>
+                                                <Label alignment="BOTTOM_CENTER" prefHeight="70.0" prefWidth="615.0" text="JumpGame" textAlignment="CENTER" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="42.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </TextFlow>
+                                        <TextFlow prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                            <children>
+                                                <Label alignment="BOTTOM_CENTER" prefHeight="70.0" prefWidth="615.0" text="CountGame" textFill="WHITE">
+                                                    <font>
+                                                        <Font size="42.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </TextFlow>
+                                        <Pane id="minigame-snake" stylesheets="@style.css" GridPane.rowIndex="2">
+                                            <GridPane.margin>
+                                                <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+                                            </GridPane.margin>
+                                        </Pane>
+                                        <Pane id="minigame-jump" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <GridPane.margin>
+                                                <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+                                            </GridPane.margin>
+                                        </Pane>
+                                        <Pane id="minigame-count" stylesheets="@style.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                            <GridPane.margin>
+                                                <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+                                            </GridPane.margin>
+                                        </Pane>
+                                    </children>
+                                </GridPane>
+                                <GridPane id="GridPaneSimple" fx:id="grid_bonus" alignment="CENTER" maxHeight="920.0" maxWidth="1880.0" prefHeight="940.0" stylesheets="@style.css">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints maxHeight="409.0" minHeight="10.0" prefHeight="83.33332824707031" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="580.3333282470703" minHeight="10.0" prefHeight="554.3333740234375" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="220.0" minHeight="10.0" prefHeight="137.6666259765625" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="220.0" minHeight="10.0" prefHeight="134.3333740234375" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <TextFlow id="bonus_box_img" fx:id="grid_bonus_img" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css" GridPane.rowIndex="1" />
+                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+                                            <children>
+                                                <Button fx:id="btn_collect_box" mnemonicParsing="false" onAction="#collectBox" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #ffff; -fx-background-radius: 24px;" text="Start">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="32.0" />
+                                                    </font>
+                                                    <VBox.margin>
+                                                        <Insets bottom="20.0" />
+                                                    </VBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                                </Button>
+                                            </children>
+                                        </VBox>
+                                        <TextFlow prefHeight="147.0" prefWidth="940.0" textAlignment="CENTER">
+                                            <children>
+                                                <Label id="txt_title" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="1880.0" text="Bonus" textAlignment="CENTER" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="48.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </TextFlow>
+                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                            <children>
+                                                <Button fx:id="btn_collect_mine" mnemonicParsing="false" onAction="#collectMine" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #ffff; -fx-background-radius: 24px;" text="Start">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="32.0" />
+                                                    </font>
+                                                    <VBox.margin>
+                                                        <Insets bottom="20.0" />
+                                                    </VBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                                </Button>
+                                            </children>
+                                        </VBox>
+                                        <HBox id="smallClock" alignment="CENTER" prefHeight="136.0" prefWidth="940.0" stylesheets="@style.css" GridPane.rowIndex="2">
+                                            <children>
+                                                <Label id="labelTime" fx:id="txt_time_box" text="00:10:00" textAlignment="CENTER" textFill="#b95f5f">
+                                                    <font>
+                                                        <Font name="SansSerif Bold" size="42.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox id="smallClock" alignment="CENTER" prefHeight="136.0" prefWidth="940.0" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <children>
+                                                <Label id="labelTime" fx:id="txt_time_mine" text="24:00:00" textAlignment="CENTER" textFill="#b95f5f">
+                                                    <font>
+                                                        <Font name="SansSerif Bold" size="42.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <TextFlow id="mining_img" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    </children>
+                                </GridPane>
+                                <GridPane id="GridPaneSimple" fx:id="grid_shop" maxHeight="920.0" maxWidth="1880.0" prefHeight="940.0" stylesheets="@style.css">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="120.0" percentHeight="0.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="96.0" minHeight="10.0" percentHeight="0.0" prefHeight="96.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="96.0" minHeight="10.0" percentHeight="0.0" prefHeight="96.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="200.0" minHeight="10.0" percentHeight="0.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <TextFlow prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER">
+                                            <children>
+                                                <Label id="txt_title" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="1880.0" text="Shop" textAlignment="CENTER" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="48.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </TextFlow>
+                                        <Button fx:id="btn_buy_2" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#Buy_thing" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #ffff; -fx-background-radius: 24px;" text="Buy" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="32.0" />
+                                            </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                        </Button>
+                                        <Button fx:id="btn_buy_1" mnemonicParsing="false" onMouseClicked="#Buy_thing" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #ffff; -fx-background-radius: 24px;" text="Buy" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="32.0" />
+                                            </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                        </Button>
+                                        <Button fx:id="btn_buy_3" mnemonicParsing="false" onMouseClicked="#Buy_thing" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #ffff; -fx-background-radius: 24px;" text="Buy" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="32.0" />
+                                            </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                        </Button>
+                                        <Button fx:id="btn_buy_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#Buy_thing" prefHeight="43.0" prefWidth="274.0" style="-fx-background-color: #ffff; -fx-background-radius: 24px;" text="Buy" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="32.0" />
+                                            </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                        </Button>
+                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="SnakeGame wallpaper: Big snake" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Bold" size="26.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label id="labelCost" alignment="CENTER" contentDisplay="CENTER" text=" 59 SlogCoin" textFill="#b92e34">
+                                                    <font>
+                                                        <Font name="SansSerif Bold" size="28.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="SnakeGame wallpaper: Boom" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Bold" size="26.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label id="labelCost" alignment="CENTER" contentDisplay="CENTER" text=" 79 SlogCoin" textFill="#b92e34">
+                                                    <font>
+                                                        <Font name="SansSerif Bold" size="28.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="SnakeGame wallpaper: Gold Snake" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Bold" size="26.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label id="labelCost" alignment="CENTER" contentDisplay="CENTER" text=" 99 SlogCoin" textFill="#b92e34">
+                                                    <font>
+                                                        <Font name="SansSerif Bold" size="28.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" text="Platformer: Gold Player" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Bold" size="26.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label id="labelCost" alignment="CENTER" contentDisplay="CENTER" text=" 119 SlogCoin" textFill="#b92e34">
+                                                    <font>
+                                                        <Font name="SansSerif Bold" size="28.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <AnchorPane id="shop_img_big_snake" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css" GridPane.rowIndex="1">
+                                            <GridPane.margin>
+                                                <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                            </GridPane.margin>
+                                        </AnchorPane>
+                                        <AnchorPane id="shop_img_gold_snake" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                            <GridPane.margin>
+                                                <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                            </GridPane.margin>
+                                        </AnchorPane>
+                                        <AnchorPane id="shop_img_boom_snake" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                            <GridPane.margin>
+                                                <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                            </GridPane.margin>
+                                        </AnchorPane>
+                              <Pane maxWidth="243.0" minWidth="243.0" prefHeight="200.0" prefWidth="243.0" style="-fx-background-color: #FFD700;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets bottom="75.0" top="75.0" />
+                                 </GridPane.margin>
+                              </Pane>
+                                    </children>
+                                </GridPane>
+                                <GridPane id="GridPane" fx:id="grid_rules" maxHeight="920.0" maxWidth="1880.0" prefHeight="940.0" style="-fx-background-color: #92A8D1;" stylesheets="@style.css">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="120.0" percentHeight="0.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <TextFlow prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff8961;" textAlignment="CENTER">
+                                            <children>
+                                                <Label id="txt_title" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="1880.0" style="-fx-background-color: #ff8961;" text="Rules" textAlignment="CENTER" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="48.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </TextFlow>
+                                        <TextFlow prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff8961;" textAlignment="CENTER" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextArea id="textArea" accessibleRole="TEXT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" maxHeight="785.0" minHeight="785.0" prefHeight="785.0" prefWidth="944.0" scaleShape="false" style="-fx-background-color: #ff8961;" text="-&#9;V základním okně (Home) jsou sepsány všechny hráčovi statistik&#10;a toto okno je určeno pouze k nahlédnutí. Jediné, co zde může hráč&#10;dělat je změnit si svůj nickname a načíst uložená data.&#10;-&#9;Hned vedle okna Home se nachází Bonus, toto okno slouží vybrání&#10;bonusu nebo k miningu SlugCoinů. Stačí kliknout na tlačítko start a&#10;Bonus se zapne. Po deseti minutách ho můžete vybrat. Mining lze spustit&#10;pouze pokud má hráč klíč od dolu. To může zjistit právě v okně Home.&#10;-&#9;Třetí okno, jsou minihry. Zde se nachází tři minihry vedle sebe. Hráč&#10;si vybere jednu z nich a na tu může kliknout. Každé jedno hraní minihry&#10;jakékoliv, sebere hráčovi jeden ticket. Ticket mají funkci jako taková&#10;vstupenka do minihry. Pokud ji hráč nemá nemůže hrát.&#10;-&#9;Předposledním oknem je shop. Shop je určen k utrácení vydělaných&#10;SlugCoinů. Hráči si zde mohou nakoupit pozadí do hry, nebo nový skin na &#10;hrdinu.&#10;-&#9;Poslední okno (Rules) slouží, jak už název napovídá k pravidlům, &#10;jsou zde sepsány velmi podobně jako zde celá pravidla této hry.&#10;-&#9;Ve všech těchto oken se nachází horní orientační bar, ten funguje pro&#10;přesouvání mezi okny a nacházejí se tady po stranách dvě tlačítka navíc.&#10;Vpravo je tlačítko na uložení hráčových dat. Vlevo je tlačítko na ukončení &#10;hry. Pokud hráč uzavře hru a zapomene uložit progres, tak je to nevratné &#10;a musí začít od znovu.&#10;">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                       <opaqueInsets>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </opaqueInsets>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                       <padding>
+                                          <Insets left="48.0" />
+                                       </padding>
+                                    </TextArea>
+                                 </children>
+                                        </TextFlow>
+                              <TextArea id="textArea" accessibleRole="TEXT" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" prefHeight="785.0" prefWidth="910.0" scaleShape="false" style="-fx-background-color: #ff8961; -fx-border-color: none;" stylesheets="@style.css" text="-&#9;Snake je nastavený tak, že lze vyhrát, stačí dosáhnout požadovaného &#10;skóre (skóre znamená, jak dlouhý je had). Had se ovládá pomocí kláves &#10;WASD. Zemřít lze pokud narazí had do stěny nebo do sebe. Pokud had &#10;zemře, hra skončí a hráč nedostane nic. Pokud vyhraje, dostane menší &#10;odměnu v podobně SlugCoinů.&#10;-&#9;Ve hře JumpGame se hráč pokouší dostat do portálu. Portál má &#10;zelenou barvu. Hrdina, který má modrou barvu, se pohybuje pomocí &#10;kláves WASD. Červené bloky jsou platformy, po kterých se hráčův hrdina &#10;může pohybovat. Pokud se hrdina dotkne nebo dopadne na oranžový &#10;blok, který znázorňuje lávu, končí pro hráče hra a nezíská žádnou &#10;odměnu. Pokud se dostane v pořádku do portálu, získá odměnu v &#10;podobě SlugCoinů.&#10;-&#9;CountGame je hra, která procvičuje počítání. Cíl je vypočítat co nejvíce &#10;příkladů za nastavený čas (20 vteřin). Uprostřed okna se objeví po startu &#10;hry příklad a tři tlačítka s výsledky. Jenom jedna odpověď je správná. Pokud &#10;hráč odpoví špatně nedostane žádný bod a hned se zobrazí nový příklad. &#10;Pokud hráč odpoví správně, získá jeden bod do celkového skóre zobrazí se &#10;také hned nový příklad. Po skončení časového limitu se získané body &#10;převedou na SlugCoiny a hráč je dostane." GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </opaqueInsets>
+                                 <cursor>
+                                    <Cursor fx:constant="DISAPPEAR" />
+                                 </cursor>
+                              </TextArea>
+                                    </children>
+                                </GridPane>
+                                <GridPane id="GridPane" fx:id="grid_home" maxHeight="900.0" maxWidth="1880.0" minHeight="905.0" minWidth="1880.0" prefHeight="905.0" prefWidth="1880.0" stylesheets="@style.css" StackPane.alignment="CENTER">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints maxHeight="310.0" minHeight="10.0" prefHeight="129.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="519.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="804.0" minHeight="10.0" prefHeight="804.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1880.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="51.0" prefWidth="200.0">
+                                                    <children>
+                                                        <Label id="txt_home" fx:id="stat_txt_name" alignment="CENTER" text="Name: " textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="24.0" />
+                                                            </font>
+                                                            <padding>
+                                                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                            </padding>
+                                                        </Label>
+                                                        <ComboBox fx:id="cmbox_names" prefHeight="39.0" prefWidth="150.0" promptText="Select nickname">
+                                                            <items>
+                                                                <FXCollections fx:factory="observableArrayList">
+                                                                    <String fx:value="Admiral" />
+                                                                    <String fx:value="Amazon" />
+                                                                    <String fx:value="Amigo" />
+                                                                    <String fx:value="Amor" />
+                                                                    <String fx:value="Anvil" />
+                                                                    <String fx:value="Ash" />
+                                                                    <String fx:value="Bandit" />
+                                                                    <String fx:value="Beef" />
+                                                                    <String fx:value="Big Mac" />
+                                                                    <String fx:value="Bootsie" />
+                                                                    <String fx:value="Bubba" />
+                                                                    <String fx:value="Buddy" />
+                                                                    <String fx:value="Buffalo" />
+                                                                    <String fx:value="Bug" />
+                                                                    <String fx:value="Buster" />
+                                                                    <String fx:value="Buzz" />
+                                                                    <String fx:value="Cherry" />
+                                                                    <String fx:value="Chicken Wing" />
+                                                                    <String fx:value="Chump" />
+                                                                    <String fx:value="Cotton" />
+                                                                    <String fx:value="Darling" />
+                                                                    <String fx:value="Dino" />
+                                                                    <String fx:value="Dirty Harry" />
+                                                                    <String fx:value="Dolly" />
+                                                                    <String fx:value="Donut" />
+                                                                    <String fx:value="Dots" />
+                                                                    <String fx:value="Figgy" />
+                                                                    <String fx:value="Frodo" />
+                                                                    <String fx:value="Gimzo" />
+                                                                    <String fx:value="Goblin" />
+                                                                    <String fx:value="Gordo" />
+                                                                    <String fx:value="Happy" />
+                                                                    <String fx:value="Hawk" />
+                                                                    <String fx:value="Huggie" />
+                                                                    <String fx:value="Kitten" />
+                                                                    <String fx:value="Loser" />
+                                                                    <String fx:value="Muffin" />
+                                                                    <String fx:value="Peppa Pig" />
+                                                                    <String fx:value="Pixie" />
+                                                                    <String fx:value="Pookie" />
+                                                                    <String fx:value="Psycho" />
+                                                                    <String fx:value="Queen Bee" />
+                                                                    <String fx:value="Rosebud" />
+                                                                    <String fx:value="Rosie" />
+                                                                    <String fx:value="Shnookie" />
+                                                                    <String fx:value="Skunk" />
+                                                                    <String fx:value="Tarzan" />
+                                                                    <String fx:value="Thor" />
+                                                                    <String fx:value="Turtle" />
+                                                                    <String fx:value="Twiggy" />
+                                                                    <String fx:value="Wilma" />
+                                                                </FXCollections>
+                                                            </items>
+                                                        </ComboBox>
+                                                    </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0">
+                                                    <padding>
+                                                        <Insets left="760.0" right="760.0" />
+                                                    </padding>
+                                                </Separator>
+                                                <HBox alignment="CENTER" prefHeight="51.0" prefWidth="200.0">
+                                                    <children>
+                                                        <Label id="txt_home" alignment="CENTER" prefHeight="51.0" prefWidth="141.0" text="SlugCoins:" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="24.0" />
+                                                            </font>
+                                                            <padding>
+                                                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                            </padding>
+                                                        </Label>
+                                                        <Label id="txt_home" fx:id="stat_txt_coin" alignment="CENTER" text="0" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="24.0" />
+                                                            </font>
+                                                            <padding>
+                                                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                            </padding>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0">
+                                                    <padding>
+                                                        <Insets left="760.0" right="760.0" />
+                                                    </padding>
+                                                </Separator>
+                                                <HBox alignment="CENTER" prefHeight="51.0" prefWidth="200.0">
+                                                    <children>
+                                                        <Label id="txt_home" alignment="CENTER" text="Tickets:" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="24.0" />
+                                                            </font>
+                                                            <padding>
+                                                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                            </padding>
+                                                        </Label>
+                                                        <Label id="txt_home" fx:id="stat_txt_ticket" alignment="CENTER" text="0" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="24.0" />
+                                                            </font>
+                                                            <padding>
+                                                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                            </padding>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0">
+                                                    <padding>
+                                                        <Insets left="760.0" right="760.0" />
+                                                    </padding>
+                                                </Separator>
+                                                <HBox alignment="CENTER" prefHeight="51.0" prefWidth="200.0">
+                                                    <children>
+                                                        <Label id="txt_home" alignment="CENTER" text="Keys:" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="24.0" />
+                                                            </font>
+                                                            <padding>
+                                                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                            </padding>
+                                                        </Label>
+                                                        <Label id="txt_home" fx:id="stat_txt_key" alignment="CENTER" text="0" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="24.0" />
+                                                            </font>
+                                                            <padding>
+                                                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                            </padding>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0">
+                                                    <padding>
+                                                        <Insets left="760.0" right="760.0" />
+                                                    </padding>
+                                                </Separator>
+                                                <HBox alignment="CENTER" prefHeight="51.0" prefWidth="200.0">
+                                                    <children>
+                                                        <Label id="txt_home" alignment="CENTER" text="First open: " textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="24.0" />
+                                                            </font>
+                                                            <padding>
+                                                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                            </padding>
+                                                        </Label>
+                                                        <Label id="txt_home" fx:id="stat_txt_open" alignment="CENTER" text="0000-00-00" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="24.0" />
+                                                            </font>
+                                                            <padding>
+                                                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                            </padding>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <Separator prefWidth="200.0">
+                                                    <padding>
+                                                        <Insets left="760.0" right="760.0" />
+                                                    </padding>
+                                                </Separator>
+                                                <Button fx:id="btn_load_data" alignment="CENTER" contentDisplay="CENTER" onAction="#loadGameData" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Load save data">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="24.0" />
+                                                    </font>
+                                                    <VBox.margin>
+                                                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                    </VBox.margin>
+                                                    <padding>
+                                                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                                    </padding>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                                </Button>
+                                            </children>
+                                            <GridPane.margin>
+                                                <Insets bottom="128.0" top="32.0" />
+                                            </GridPane.margin>
+                                        </VBox>
+                                        <TextFlow prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER">
+                                            <children>
+                                                <Label id="txt_title" alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="1880.0" text="Player statistic" textAlignment="CENTER" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="48.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </TextFlow>
+                                    </children>
+                                    <StackPane.margin>
+                                        <Insets />
+                                    </StackPane.margin>
+                                </GridPane>
+                            </children>
+                        </StackPane>
+                        <HBox alignment="CENTER_LEFT" maxHeight="158.0" maxWidth="1880.0" minHeight="158.0" minWidth="1880.0" prefHeight="158.0" prefWidth="1880.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                            <children>
+                                <Button fx:id="btn_exit" alignment="TOP_RIGHT" cache="true" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#extClick" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="X" textAlignment="CENTER">
+                                    <font>
+                                        <Font name="SansSerif Bold" size="13.0" />
+                                    </font>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets bottom="72.0" right="471.0" />
+                                    </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                </Button>
+                                <Button fx:id="btn_home" onAction="#onClick" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Home">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="24.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                </Button>
+                                <Button fx:id="btn_bonus" mnemonicParsing="false" onAction="#onClick" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Bonus" textAlignment="CENTER">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="24.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="64.0" right="64.0" />
+                                    </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                </Button>
+                                <Button fx:id="btn_minigames" mnemonicParsing="false" onAction="#onClick" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Minigames">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="36.0" />
+                                    </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                </Button>
+                                <Button fx:id="btn_shop" mnemonicParsing="false" onAction="#onClick" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Shop">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="24.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="64.0" right="64.0" />
+                                    </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                </Button>
+                                <Button fx:id="btn_rules" mnemonicParsing="false" onAction="#onClick" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Rules">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="24.0" />
+                                    </font>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                </Button>
+                                <Button fx:id="btn_saveGame" alignment="CENTER_RIGHT" cache="true" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveGameDataByBtn" style="-fx-background-color: #fff; -fx-background-radius: 24px;" text="Save game" textAlignment="CENTER">
+                                    <font>
+                                        <Font name="SansSerif Bold" size="13.0" />
+                                    </font>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <HBox.margin>
+                                        <Insets bottom="72.0" left="432.0" />
+                                    </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                </Button>
+                            </children>
+                            <cursor>
+                                <Cursor fx:constant="DEFAULT" />
+                            </cursor>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="40.0" />
+                    </padding>
+                </GridPane>
+            </children>
+        </StackPane>
+    </children>
+</VBox>

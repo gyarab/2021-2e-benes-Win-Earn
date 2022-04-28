@@ -1,0 +1,157 @@
+#GridPane {
+    /*#22204a*/
+    -fx-background-image: url("img/nature-wall.jpg"), url("img/snail.png");
+    -fx-background-size: cover, auto;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-position: relative;
+}
+
+#GridPaneSimple {
+    /*#22204a*/
+    -fx-background-image: url("img/nature-wall.jpg");
+    -fx-background-size: cover, auto;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-position: relative;
+}
+
+#GridPane {
+    -fx-content: '';
+    -fx-position: absolute;
+    -fx-inset: 0;
+    -fx-background-color: grey;
+    -fx-opacity: 1;
+}
+
+Label {
+    -fx-text-fill: #1a1a1a;
+    /*-fx-font-weight: 600;*/
+}
+
+#labelTime {
+    -fx-text-fill: #800000;
+    /*-fx-font-weight: 600;*/
+}
+
+#labelCost {
+    -fx-text-fill: #b30000;
+    -fx-font-weight: 600;
+}
+
+#txt_home {
+    -fx-text-fill: #f2f2f2;
+    /*-fx-font-weight: 600;*/
+}
+
+#vbox {
+    -fx-background-color: #32434e /*#16161d*/;
+    -fx-background-repeat: no-repeat, repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#bonus_box_img {
+    -fx-background-image: url("img/box.png");
+    -fx-background-repeat: no-repeat, repeat;
+    -fx-background-position: center;
+}
+
+#shop_img_big_snake {
+    -fx-background-image: url("img/2290575.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+#shop_img_gold_snake {
+    -fx-background-image: url("img/gold_snake_wallpaper.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+#shop_img_boom_snake {
+    -fx-background-image: url("img/cool_snake_wallpaper.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+#shop_img_clasic_snake {
+    -fx-background-image: url("img/snake-game-wallpapers.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#minigame-snake {
+    -fx-background-image: url("img/anaconda.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#minigame-jump {
+    -fx-background-image: url("img/jump.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#minigame-count {
+    -fx-background-image: url("img/abacus.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#smallClock {
+    -fx-background-image: url("img/small_clock.png");
+    -fx-background-repeat: no-repeat, repeat;
+    -fx-background-position: center;
+}
+
+#underGround {
+    -fx-background-image: url("img/underground.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#mining_img {
+    -fx-background-image: url("img/pickaxe.png");
+    -fx-background-repeat: no-repeat, repeat;
+    -fx-background-position: center;
+}
+
+#snakeHead {
+    -fx-background-image: url("img/snakeHead.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#snakeBody {
+    -fx-background-color: #19bf19;
+    -fx-border-radius: 12px;
+    -fx-border-color: none;
+}
+
+#textArea .content {
+    -fx-background-color: #ff8961;
+    -fx-cursor: default;
+    -fx-text-fill: #1a1a1a;
+}
+
+#textArea {
+    -fx-text-fill: #1a1a1a;
+}
+
+
+#textArea:focused {
+    -fx-background-color: #ff8961;
+    -fx-highlight-fill: transparent;
+    -fx-text-fill:  #1a1a1a;
+    -fx-highlight-text-fill: #1a1a1a;
+}
