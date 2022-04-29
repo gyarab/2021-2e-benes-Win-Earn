@@ -166,9 +166,7 @@ public class Platformer extends Application {
             }
             for (Node lava : lava) {
                 if (hrac.getBoundsInParent().intersects(lava.getBoundsInParent())) {
-                    hrac.setTranslateY(500);
-                    hrac.setTranslateX(0);
-                    herniPole.setLayoutX(0);
+                    hrac.setVisible(false);
                     konecHry();
                 }
             }
@@ -275,3 +273,4 @@ public class Platformer extends Application {
         launch(args);
     }
 }
+
