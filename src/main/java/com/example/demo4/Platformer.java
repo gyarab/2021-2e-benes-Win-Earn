@@ -1,4 +1,4 @@
-package com.example.demo4;
+package com.example.demo;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -190,6 +190,7 @@ public class Platformer extends Application {
         scene.setRoot(pomoc);
 
         prohra = true;
+        klice1.clear();
     }
 
     protected Node vytvoritHrace(int x, int y, int w, int h, Color color) {
@@ -214,7 +215,7 @@ public class Platformer extends Application {
         podklad.getChildren().removeAll(bg, herniPole, rozhrani);
         scene.setRoot(pomoc);
         vyhra = true;
-
+        klice1.clear();
     }
 
     AnimationTimer timerVyhPro;
@@ -274,4 +275,3 @@ public class Platformer extends Application {
         launch(args);
     }
 }
-
